@@ -25,7 +25,7 @@
 ## Demo
 
 You can try a live version here:  
-🔗 [https://eric-lautanen.github.io/PDFSplitMerge/](https://eric-lautanen.github.io/PDFSplitMerge/)  
+🔗 [https://eric-lautanen.github.io/PDFSplitMergeRemove/](https://eric-lautanen.github.io/PDFSplitMergeRemove/)  
 
 ## How to Use
 
