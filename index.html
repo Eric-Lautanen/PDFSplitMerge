@@ -503,7 +503,7 @@
                 canvas.height = viewport.height; canvas.width = viewport.width;
                 await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
 
-                results.push({ blob: new Blob([bytes], {type:'application/pdf'}), name: `${removeFile.name.replace(/\.pdf$/i, '')}_Removed.pdf`, canvas: canvas });
+                results.push({ blob: new Blob([bytes], {type:'application/pdf'}), name: `${removeFile.name.replace(/\.pdf$/i, '')}_Cleaned.pdf`, canvas: canvas });
                 openModal("Pages Removed", results);
             } else {
                 const merged = await PDFDocument.create();
