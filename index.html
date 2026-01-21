@@ -3,9 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
     <title>PDFSplitMergeRemove</title>
     
     <script>
@@ -264,7 +261,7 @@
     <div class="view-container">
         <div id="split-panel" class="panel active">
             <div id="split-upload" class="drop-zone" onclick="document.getElementById('split-input').click()">
-                <div class="drop-icon">📁</div>
+                <div class="drop-icon">📂</div>
                 <h3>Split a Document</h3>
                 <p style="color: var(--text-muted); margin-top: 8px;">Select a file to extract individual pages</p>
                 <input type="file" id="split-input" accept=".pdf" style="display:none" onchange="handleSplitSelect(this)">
@@ -274,7 +271,7 @@
 
         <div id="remove-panel" class="panel">
             <div id="remove-upload" class="drop-zone" onclick="document.getElementById('remove-input').click()">
-                <div class="drop-icon">📁</div>
+                <div class="drop-icon">📂</div>
                 <h3>Remove Pages from Document</h3>
                 <p style="color: var(--text-muted); margin-top: 8px;">Select a file to remove specific pages</p>
                 <input type="file" id="remove-input" accept=".pdf" style="display:none" onchange="handleRemoveSelect(this)">
@@ -284,7 +281,7 @@
 
         <div id="merge-panel" class="panel">
             <div class="drop-zone" onclick="document.getElementById('merge-input').click()">
-                <div class="drop-icon">📁</div>
+                <div class="drop-icon">📂</div>
                 <h3>Add PDFs to Combine</h3>
                 <p style="color: var(--text-muted); margin-top: 8px;">Select files to merge into one file</p>
                 <input type="file" id="merge-input" accept=".pdf" multiple style="display:none" onchange="handleMergeSelect(this)">
@@ -333,6 +330,79 @@
 
     document.getElementById('result-modal').addEventListener('click', function(e) {
         if(e.target === this) closeModal();
+    });
+
+    // Drag and drop event handlers
+    // Split panel drag and drop
+    const splitUpload = document.getElementById('split-upload');
+    splitUpload.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        splitUpload.style.borderColor = 'var(--primary)';
+        splitUpload.style.background = 'rgba(59, 130, 246, 0.05)';
+    });
+    splitUpload.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        splitUpload.style.borderColor = '';
+        splitUpload.style.background = '';
+    });
+    splitUpload.addEventListener('drop', (e) => {
+        e.preventDefault();
+        splitUpload.style.borderColor = '';
+        splitUpload.style.background = '';
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+            const input = document.getElementById('split-input');
+            input.files = files;
+            handleSplitSelect(input);
+        }
+    });
+
+    // Remove panel drag and drop
+    const removeUpload = document.getElementById('remove-upload');
+    removeUpload.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        removeUpload.style.borderColor = 'var(--primary)';
+        removeUpload.style.background = 'rgba(59, 130, 246, 0.05)';
+    });
+    removeUpload.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        removeUpload.style.borderColor = '';
+        removeUpload.style.background = '';
+    });
+    removeUpload.addEventListener('drop', (e) => {
+        e.preventDefault();
+        removeUpload.style.borderColor = '';
+        removeUpload.style.background = '';
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+            const input = document.getElementById('remove-input');
+            input.files = files;
+            handleRemoveSelect(input);
+        }
+    });
+
+    // Merge panel drag and drop
+    const mergeUpload = document.querySelector('#merge-panel .drop-zone');
+    mergeUpload.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        mergeUpload.style.borderColor = 'var(--primary)';
+        mergeUpload.style.background = 'rgba(59, 130, 246, 0.05)';
+    });
+    mergeUpload.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        mergeUpload.style.borderColor = '';
+        mergeUpload.style.background = '';
+    });
+    mergeUpload.addEventListener('drop', (e) => {
+        e.preventDefault();
+        mergeUpload.style.borderColor = '';
+        mergeUpload.style.background = '';
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+            const input = document.getElementById('merge-input');
+            input.files = files;
+            handleMergeSelect(input);
+        }
     });
 
     function showTab(tab) {
