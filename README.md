@@ -2,9 +2,6 @@
 
 **A clean, modern, browser-based PDF tool** — split documents into individual pages, merge multiple PDFs, or remove selected pages — **100% client-side** with no server upload required.
 
-![App Screenshot](https://via.placeholder.com/1200x600.png?text=PDF+Split+Merge+Remove+Screenshot)  
-*(Replace this with a real screenshot of your app after you take one!)*
-
 ## Features
 
 - **Split Engine** — Extract all pages or only selected pages from a PDF
